@@ -1,4 +1,6 @@
+
 public class Guest {
+
     private String nama;
     private String nomorKTP;
     private String nomorTelepon;
@@ -31,5 +33,13 @@ public class Guest {
 
     public String getJenisKelamin() {
         return jenisKelamin;
+    }
+
+    public void tampilkanDataTamu() {
+        System.out.println("Nama Pemesan : " + nama);
+        System.out.println("Jenis Kelamin: " + jenisKelamin);
+        System.out.println("No. KTP      : " + nomorKTP);
+        System.out.println("Telepon      : " + nomorTelepon);
+        System.out.println("Email        : " + email);
     }
 }

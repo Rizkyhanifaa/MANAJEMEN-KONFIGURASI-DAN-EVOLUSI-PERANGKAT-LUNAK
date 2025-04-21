@@ -32,11 +32,7 @@ public class HotelRoomBooking {
 
     public void cetakDetailPemesanan() {
         System.out.println("===== DETAIL PEMESANAN KAMAR =====");
-        System.out.println("Nama Pemesan : " + tamu.getNama());
-        System.out.println("Jenis Kelamin: " + tamu.getJenisKelamin());
-        System.out.println("No. KTP      : " + tamu.getNomorKTP());
-        System.out.println("Telepon      : " + tamu.getNomorTelepon());
-        System.out.println("Email        : " + tamu.getEmail());
+        tamu.tampilkanDataTamu();
         System.out.println("Jenis Kamar  : " + jenisKamar);
         System.out.println("Jumlah Tamu  : " + jumlahTamu);
         System.out.println("Jumlah Malam : " + jumlahMalam);
