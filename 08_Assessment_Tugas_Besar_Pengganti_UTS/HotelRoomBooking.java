@@ -33,10 +33,10 @@ public class HotelRoomBooking {
     public void cetakDetailPemesanan() {
         System.out.println("===== DETAIL PEMESANAN KAMAR =====");
         System.out.println("Nama Pemesan : " + tamu.getNama());
-        System.out.println("Jenis Kelamin: " + jenisKelamin);
-        System.out.println("No. KTP      : " + nomorKTP);
-        System.out.println("Telepon      : " + nomorTelepon);
-        System.out.println("Email        : " + email);
+        System.out.println("Jenis Kelamin: " + tamu.getJenisKelamin());
+        System.out.println("No. KTP      : " + tamu.getNomorKTP());
+        System.out.println("Telepon      : " + tamu.getNomorTelepon());
+        System.out.println("Email        : " + tamu.getEmail());
         System.out.println("Jenis Kamar  : " + jenisKamar);
         System.out.println("Jumlah Tamu  : " + jumlahTamu);
         System.out.println("Jumlah Malam : " + jumlahMalam);
@@ -79,30 +79,6 @@ public class HotelRoomBooking {
             return "Pasangan";
         else
             return "Keluarga";
-    }
-
-    public String getNamaPemesan() {
-        return namaPemesan;
-    }
-
-    public void setNamaPemesan(String namaPemesan) {
-        this.namaPemesan = namaPemesan;
-    }
-
-    public String getNomorKTP() {
-        return nomorKTP;
-    }
-
-    public void setNomorKTP(String nomorKTP) {
-        this.nomorKTP = nomorKTP;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getJenisKamar() {
