@@ -6,7 +6,7 @@ public class HotelRoomBooking {
     private Room kamar;
     private int jumlahTamu;
     private int jumlahMalam;
-    private String kodeVoucher;
+    private Voucher voucher;
     private boolean sudahDibayar;
     private Date tanggalCheckin;
     private Date tanggalCheckout;
@@ -14,7 +14,7 @@ public class HotelRoomBooking {
 
     public HotelRoomBooking(Guest tamu, Room kamar, int jumlahTamu, int jumlahMalam,
             Date tanggalCheckin, Date tanggalCheckout, BookingStatus status,
-            String kodeVoucher, boolean sudahDibayar) {
+            Voucher voucher, boolean sudahDibayar) {
 
         this.tamu = tamu;
         this.kamar = kamar;
@@ -23,7 +23,7 @@ public class HotelRoomBooking {
         this.tanggalCheckin = tanggalCheckin;
         this.tanggalCheckout = tanggalCheckout;
         this.status = status;
-        this.kodeVoucher = kodeVoucher;
+        this.voucher = voucher;
         this.sudahDibayar = sudahDibayar;
     }
 
@@ -36,7 +36,7 @@ public class HotelRoomBooking {
         System.out.println("Check-in     : " + tanggalCheckin);
         System.out.println("Check-out    : " + tanggalCheckout);
         System.out.println("Status Aktif : " + status);
-        System.out.println("Voucher      : " + kodeVoucher);
+        System.out.println("Voucher      : " + (voucher != null ? voucher.getKode() : "-"));
         System.out.println("Sudah Dibayar: " + sudahDibayar);
         System.out.println("Total Biaya  : Rp " + hitungTotalBiaya());
         System.out.println("Tipe Tamu    : " + klasifikasiTamu());
@@ -48,10 +48,10 @@ public class HotelRoomBooking {
         if (jumlahTamu > 2) {
             total += (jumlahTamu - 2) * 100000;
         }
-        if (kodeVoucher != null && kodeVoucher.length() > 3) {
-            total -= 50000;
+        if (voucher != null) {
+            total -= voucher.hitungDiskon();
         }
-        if (status == BookingStatus.NONAKTIF) {
+        if (!status.isActive()) {  // Menggunakan enum BookingStatus
             total = 0;
         }
         return total;
