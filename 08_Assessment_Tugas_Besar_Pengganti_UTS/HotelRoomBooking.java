@@ -10,10 +10,10 @@ public class HotelRoomBooking {
     private boolean sudahDibayar;
     private Date tanggalCheckin;
     private Date tanggalCheckout;
-    private boolean statusAktif;
+    private BookingStatus status;
 
     public HotelRoomBooking(Guest tamu, Room kamar, int jumlahTamu, int jumlahMalam,
-            Date tanggalCheckin, Date tanggalCheckout, boolean statusAktif,
+            Date tanggalCheckin, Date tanggalCheckout, BookingStatus status,
             String kodeVoucher, boolean sudahDibayar) {
 
         this.tamu = tamu;
@@ -22,7 +22,7 @@ public class HotelRoomBooking {
         this.jumlahMalam = jumlahMalam;
         this.tanggalCheckin = tanggalCheckin;
         this.tanggalCheckout = tanggalCheckout;
-        this.statusAktif = statusAktif;
+        this.status = status;
         this.kodeVoucher = kodeVoucher;
         this.sudahDibayar = sudahDibayar;
     }
@@ -35,7 +35,7 @@ public class HotelRoomBooking {
         System.out.println("Jumlah Malam : " + jumlahMalam);
         System.out.println("Check-in     : " + tanggalCheckin);
         System.out.println("Check-out    : " + tanggalCheckout);
-        System.out.println("Status Aktif : " + statusAktif);
+        System.out.println("Status Aktif : " + status);
         System.out.println("Voucher      : " + kodeVoucher);
         System.out.println("Sudah Dibayar: " + sudahDibayar);
         System.out.println("Total Biaya  : Rp " + hitungTotalBiaya());
@@ -51,7 +51,7 @@ public class HotelRoomBooking {
         if (kodeVoucher != null && kodeVoucher.length() > 3) {
             total -= 50000;
         }
-        if (!statusAktif) {
+        if (status == BookingStatus.NONAKTIF) {
             total = 0;
         }
         return total;
