@@ -1,3 +1,9 @@
 public enum BookingStatus {
-    AKTIF, NONAKTIF
+    ACTIVE,
+    CANCELLED,
+    PENDING;
+
+    public boolean isActive() {
+        return this == ACTIVE;
+    }
 }
