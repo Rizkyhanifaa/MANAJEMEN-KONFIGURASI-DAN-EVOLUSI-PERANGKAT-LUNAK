@@ -3,26 +3,23 @@ import java.util.Date;
 public class HotelRoomBooking {
 
     private Guest tamu; 
-    private String jenisKamar;
+    private Room kamar;
     private int jumlahTamu;
     private int jumlahMalam;
-    private double hargaPerMalam;
     private String kodeVoucher;
     private boolean sudahDibayar;
     private Date tanggalCheckin;
     private Date tanggalCheckout;
     private boolean statusAktif;
 
-    public HotelRoomBooking(Guest tamu,
-            String jenisKamar, int jumlahTamu, int jumlahMalam, double hargaPerMalam,
+    public HotelRoomBooking(Guest tamu, Room kamar, int jumlahTamu, int jumlahMalam,
             Date tanggalCheckin, Date tanggalCheckout, boolean statusAktif,
             String kodeVoucher, boolean sudahDibayar) {
 
         this.tamu = tamu;
-        this.jenisKamar = jenisKamar;
+        this.kamar = kamar;
         this.jumlahTamu = jumlahTamu;
         this.jumlahMalam = jumlahMalam;
-        this.hargaPerMalam = hargaPerMalam;
         this.tanggalCheckin = tanggalCheckin;
         this.tanggalCheckout = tanggalCheckout;
         this.statusAktif = statusAktif;
@@ -33,10 +30,9 @@ public class HotelRoomBooking {
     public void cetakDetailPemesanan() {
         System.out.println("===== DETAIL PEMESANAN KAMAR =====");
         tamu.tampilkanDataTamu();
-        System.out.println("Jenis Kamar  : " + jenisKamar);
+        kamar.tampilkanDetailKamar();
         System.out.println("Jumlah Tamu  : " + jumlahTamu);
         System.out.println("Jumlah Malam : " + jumlahMalam);
-        System.out.println("Harga/Malam  : " + hargaPerMalam);
         System.out.println("Check-in     : " + tanggalCheckin);
         System.out.println("Check-out    : " + tanggalCheckout);
         System.out.println("Status Aktif : " + statusAktif);
@@ -48,7 +44,7 @@ public class HotelRoomBooking {
     }
 
     public double hitungTotalBiaya() {
-        double total = hargaPerMalam * jumlahMalam;
+        double total = kamar.getHargaPerMalam() * jumlahMalam;
         if (jumlahTamu > 2) {
             total += (jumlahTamu - 2) * 100000;
         }
@@ -70,14 +66,6 @@ public class HotelRoomBooking {
             return "Keluarga";
     }
 
-    public String getJenisKamar() {
-        return jenisKamar;
-    }
-
-    public void setJenisKamar(String jenisKamar) {
-        this.jenisKamar = jenisKamar;
-    }
-
     public int getJumlahMalam() {
         return jumlahMalam;
     }
@@ -85,15 +73,7 @@ public class HotelRoomBooking {
     public void setJumlahMalam(int jumlahMalam) {
         this.jumlahMalam = jumlahMalam;
     }
-
-    public double getHargaPerMalam() {
-        return hargaPerMalam;
-    }
-
-    public void setHargaPerMalam(double hargaPerMalam) {
-        this.hargaPerMalam = hargaPerMalam;
-    }
-
+    
     public boolean isSudahDibayar() {
         return sudahDibayar;
     }
